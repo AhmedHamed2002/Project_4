@@ -12,8 +12,27 @@ function end(num1 , num2 , num3 )
     setInterval(function(){title.innerHTML += '.'} , 300); 
     setTimeout(function(){location.reload()} ,1500) ; 
 }
+
+function Draw()
+{
+    let  flag  =1 ; 
+    for(let i=1 ; i<=9 ; i++)
+    {
+        let  box  =   document.getElementById('box'+i) ; 
+        if(box.innerHTML === '') flag = 0 ;  
+    }
+    return flag  ;  
+}
+
 function  winner() 
 {
+    if(Draw()) 
+    {
+        title.innerHTML = "Draw"
+        setInterval(function(){title.innerHTML += '.'} , 300); 
+        setTimeout(function(){location.reload()} ,1500) ; 
+        return ;
+    }  
     for(let i =1  ; i< 10 ; i++)  squares[i]  = document.getElementById('box' + i ).innerHTML ;    
     if(squares[1]==squares[2] && squares[2]==squares[3] && squares[1]!='') end(1,2,3);  
     else if(squares[4]==squares[5] && squares[5]==squares[6] && squares[4]!='') end(4,5,6); 
